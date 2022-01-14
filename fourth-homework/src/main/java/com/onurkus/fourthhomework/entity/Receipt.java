@@ -30,4 +30,5 @@ public class Receipt {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_DEBT",foreignKey = @ForeignKey(name = "FK_RECEIPT_DEBT_ID"))
     private Debt debtId;
+
 }

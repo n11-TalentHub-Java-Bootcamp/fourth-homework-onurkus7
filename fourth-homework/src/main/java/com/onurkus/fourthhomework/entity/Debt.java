@@ -37,5 +37,4 @@ public class Debt {
     @JoinColumn(name = "ID_USERS",foreignKey = @ForeignKey(name = "FK_DEBT_USER_ID"))
     private User userId;
 
-
 }
