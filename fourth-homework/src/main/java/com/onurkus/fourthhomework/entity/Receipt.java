@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "RECEIPT")
 @Data
-public class Receipt {
+public class Receipt implements BaseEntity {
     @SequenceGenerator(name = "generator", sequenceName = "RECEIPT_ID_SEQ")
     @Id
     @GeneratedValue(generator = "generator")
@@ -24,7 +24,7 @@ public class Receipt {
     private BigDecimal receiptAmount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_USERS",foreignKey = @ForeignKey(name = "FK_DEBT_USER_ID"))
+    @JoinColumn(name = "ID_USER",foreignKey = @ForeignKey(name = "FK_DEBT_USER_ID"))
     private User userId;
 
     @OneToOne(fetch = FetchType.LAZY)

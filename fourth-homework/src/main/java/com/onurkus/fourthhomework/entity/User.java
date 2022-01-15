@@ -5,9 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 @Data
-public class User {
+public class User implements BaseEntity{
 
     @SequenceGenerator(name = "generator", sequenceName = "USER_ID_SEQ")
     @Id

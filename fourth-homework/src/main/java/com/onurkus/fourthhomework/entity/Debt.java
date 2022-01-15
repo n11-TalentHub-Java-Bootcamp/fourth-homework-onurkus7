@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name="DEBT")
 @Data
-public class Debt {
+public class Debt implements BaseEntity {
 
     @SequenceGenerator(name = "generator", sequenceName = "DEBT_ID_SEQ")
     @Id
@@ -34,7 +34,7 @@ public class Debt {
     private Long relationDebtType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_USERS",foreignKey = @ForeignKey(name = "FK_DEBT_USER_ID"))
+    @JoinColumn(name = "ID_USER",foreignKey = @ForeignKey(name = "FK_DEBT_USER_ID"))
     private User userId;
 
 }
