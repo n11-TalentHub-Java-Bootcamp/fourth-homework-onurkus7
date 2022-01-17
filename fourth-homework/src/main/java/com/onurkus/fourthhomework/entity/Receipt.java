@@ -25,10 +25,10 @@ public class Receipt implements BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_USER",foreignKey = @ForeignKey(name = "FK_DEBT_USER_ID"))
-    private User userId;
+    private User user;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_DEBT",foreignKey = @ForeignKey(name = "FK_RECEIPT_DEBT_ID"))
-    private Debt debtId;
+    private Debt debt;
 
 }

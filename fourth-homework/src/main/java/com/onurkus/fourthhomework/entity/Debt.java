@@ -1,15 +1,19 @@
 package com.onurkus.fourthhomework.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
 @Table(name="DEBT")
 @Data
-public class Debt implements BaseEntity {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "userId"})
+public class Debt implements BaseEntity, Serializable {
 
     @SequenceGenerator(name = "generator", sequenceName = "DEBT_ID_SEQ")
     @Id
@@ -23,6 +27,12 @@ public class Debt implements BaseEntity {
     @Column(name = "LAST_DEBT_AMOUNT")
     private BigDecimal lastDebtAmount;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    @Column(name = "CREATED_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     @Column(name = "MATURITY_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date maturityDate;

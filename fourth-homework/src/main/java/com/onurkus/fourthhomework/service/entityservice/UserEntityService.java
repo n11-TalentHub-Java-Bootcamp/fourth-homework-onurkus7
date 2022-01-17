@@ -11,4 +11,6 @@ public class UserEntityService extends BaseEntityService<User,UserDao> {
     public UserEntityService(UserDao dao) {
         super(dao);
     }
+
+
 }
