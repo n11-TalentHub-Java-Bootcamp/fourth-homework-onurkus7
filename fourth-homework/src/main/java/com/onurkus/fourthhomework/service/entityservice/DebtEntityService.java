@@ -24,4 +24,9 @@ public class DebtEntityService extends BaseEntityService<Debt,DebtDao> {
         return getDao().findDebtByUserId(userId);
     }
 
+    public List<Debt> findOverdueDebtByUserId(Long userId){
+        return getDao().findOverdueDebtByUserId(userId);
+    }
+
+
 }

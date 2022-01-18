@@ -30,7 +30,7 @@ public class DebtController {
         debtSaveDto.setRelationDebtType(0L);    //relationDebtType=0 -> Normally Debt
 
         debtSaveDto.setMaturityDate(debtService.calcMaturityDate(debtSaveDto.getCreatedDate()));
-        
+
         debtSaveDto.setLastDebtAmount(debtSaveDto.getMainDebtAmount());
 
         DebtDto debtDto= debtService.save(debtSaveDto);
@@ -51,6 +51,14 @@ public class DebtController {
     public List<DebtUserDto> getDebtByUserId(@PathVariable Long userId) {
 
         List<DebtUserDto> debtUserDto=debtService.findDebtByUserId(userId);
+
+        return debtUserDto;
+    }
+
+    @GetMapping("/overdue-debts/{userId}")
+    public List<DebtUserDto> getOverdueDebtByUserId(@PathVariable Long userId) {
+
+        List<DebtUserDto> debtUserDto=debtService.findOverdueDebtByUserId(userId);
 
         return debtUserDto;
     }

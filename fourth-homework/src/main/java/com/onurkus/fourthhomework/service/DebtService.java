@@ -46,6 +46,14 @@ public class DebtService {
         return debtUserDto;
     }
 
+    public List<DebtUserDto> findOverdueDebtByUserId (Long userId){
+
+        List<Debt> debtList=debtEntityService.findOverdueDebtByUserId(userId);
+        List<DebtUserDto> debtUserDto = DebtMapper.INSTANCE.convertToDebtUserDtoList(debtList);
+
+        return debtUserDto;
+    }
+
     public Date calcMaturityDate (Date createdDate){
 
         Calendar c= Calendar.getInstance();
