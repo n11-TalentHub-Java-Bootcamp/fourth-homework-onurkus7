@@ -9,6 +9,7 @@ import com.onurkus.fourthhomework.service.entityservice.DebtEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -52,6 +53,24 @@ public class DebtService {
         List<DebtUserDto> debtUserDto = DebtMapper.INSTANCE.convertToDebtUserDtoList(debtList);
 
         return debtUserDto;
+    }
+
+    public BigDecimal findSumOfTotalDebtByUserId (Long userId){
+
+        BigDecimal sumOfOverdueDebt=debtEntityService.findSumOfTotalDebtByUserId(userId);
+        return sumOfOverdueDebt;
+    }
+
+    public BigDecimal findSumOfOverdueDebtByUserId (Long userId){
+
+        BigDecimal sumOfOverdueDebt=debtEntityService.findSumOfOverdueDebtByUserId(userId);
+        return sumOfOverdueDebt;
+    }
+
+    public BigDecimal findSumOfLateFeeDebtByUserId (Long userId){
+
+        BigDecimal sumOfLateFeeDebt=debtEntityService.findSumOfLateFeeDebtByUserId(userId);
+        return sumOfLateFeeDebt;
     }
 
     public Date calcMaturityDate (Date createdDate){

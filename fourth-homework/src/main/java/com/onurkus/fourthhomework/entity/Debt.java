@@ -41,7 +41,7 @@ public class Debt implements BaseEntity, Serializable {
     private String debtType;
 
     @Column(name = "RELATION_DEBT_ID")
-    private Long relationDebtType;
+    private Long relationDebtTypeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_USER",foreignKey = @ForeignKey(name = "FK_DEBT_USER_ID"))

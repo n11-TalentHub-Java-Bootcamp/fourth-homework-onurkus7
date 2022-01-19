@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -63,5 +64,28 @@ public class DebtController {
         return debtUserDto;
     }
 
+    @GetMapping("/total-debts/{userId}")
+    public ResponseEntity getSumOfTotalDebtByUserId(@PathVariable Long userId) {
+
+        BigDecimal sumOfTotalDebt=debtService.findSumOfTotalDebtByUserId(userId);
+
+        return ResponseEntity.ok("(UserId: "+userId+") Total debt: "+sumOfTotalDebt);
+    }
+
+    @GetMapping("/sum-of-overdue-debts/{userId}")
+    public ResponseEntity getSumOfOverdueDebtByUserId(@PathVariable Long userId) {
+
+        BigDecimal sumOfOverdueDebt=debtService.findSumOfOverdueDebtByUserId(userId);
+
+        return ResponseEntity.ok("(UserId: "+userId+") Sum of overdue debt: "+sumOfOverdueDebt);
+    }
+
+    @GetMapping("/sum-of-late-fee-debts/{userId}")
+    public ResponseEntity getSumOfLateFeeDebtByUserId(@PathVariable Long userId) {
+
+        BigDecimal SumOfLateFeeDebt=debtService.findSumOfLateFeeDebtByUserId(userId);
+
+        return ResponseEntity.ok("(UserId: "+userId+") Sum of late fee debt: "+SumOfLateFeeDebt);
+    }
 
 }
